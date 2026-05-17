@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.cbRloe = new System.Windows.Forms.ComboBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -107,6 +110,7 @@
             this.tbEmailId.Name = "tbEmailId";
             this.tbEmailId.Size = new System.Drawing.Size(287, 24);
             this.tbEmailId.TabIndex = 6;
+            this.tbEmailId.TextChanged += new System.EventHandler(this.tbEmailId_TextChanged);
             // 
             // cbRloe
             // 
@@ -115,6 +119,7 @@
             this.cbRloe.Name = "cbRloe";
             this.cbRloe.Size = new System.Drawing.Size(297, 24);
             this.cbRloe.TabIndex = 7;
+            this.cbRloe.SelectedIndexChanged += new System.EventHandler(this.cbRloe_SelectedIndexChanged);
             // 
             // btnAddUser
             // 
@@ -125,6 +130,7 @@
             this.btnAddUser.TabIndex = 8;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnExit
             // 
@@ -135,6 +141,10 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // User
             // 
@@ -154,6 +164,7 @@
             this.Name = "User";
             this.Text = "User";
             this.Load += new System.EventHandler(this.User_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +182,6 @@
         private System.Windows.Forms.ComboBox cbRloe;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

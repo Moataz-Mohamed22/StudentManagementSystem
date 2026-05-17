@@ -70,20 +70,42 @@ namespace StudentManagementSystem
 
                     // Insert Query
                     SqlCommand cmd = new SqlCommand(
-                        "Insert Into Role " +
-                        "(roleName,createdBy,createdOn,updateBy,updateOn) " +
-                        "Values " +
-                        "(@rname,@cby,@con,@uby,@uon)",
-                        con
+                          @"INSERT INTO Role
+                        (
+                            roleId,
+                            roleName,
+                            createdBy,
+                            createdOn,
+                            updatedBy,
+                            updatedOn
+                        )
+
+                        VALUES
+                        (
+                            @rid,
+                            @rname,
+                            @cby,
+                            @con,
+                            @uby,
+                            @uon
+                        )",
+      con
+  );
+
+                    cmd.Parameters.AddWithValue(
+                        "@rid",
+                        Guid.NewGuid().ToString()
                     );
 
-                    // Parameters
                     cmd.Parameters.AddWithValue("@rname", roleName);
-                    cmd.Parameters.AddWithValue("@cby", "Admin");
-                    cmd.Parameters.AddWithValue("@con", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@uby", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@uon", DBNull.Value);
 
+                    cmd.Parameters.AddWithValue("@cby", "Admin");
+
+                    cmd.Parameters.AddWithValue("@con", DateTime.Now);
+
+                    cmd.Parameters.AddWithValue("@uby", DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@uon", DBNull.Value);
                     // Execute Insert
                     int rows = cmd.ExecuteNonQuery();
 
@@ -157,7 +179,7 @@ namespace StudentManagementSystem
                 if (rows > 0)
                 {
                     MessageBox.Show(
-                        "Role Deleted Successfully","Success",MessageBoxButtons.OK, MessageBoxIcon.Information
+                        "Role Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information
                     );
 
                     tb_roleName.Clear();
@@ -165,7 +187,7 @@ namespace StudentManagementSystem
                 else
                 {
                     MessageBox.Show(
-                        "Role Not Found" ,
+                        "Role Not Found",
                         "Warning",
                         MessageBoxButtons.OK,
                             MessageBoxIcon.Warning
