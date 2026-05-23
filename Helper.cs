@@ -50,13 +50,20 @@ namespace StudentManagementSystem
         }
 
         // Send Email
-        public static bool GetMail
-        (
-            string email,
-            string subject,
-            string message
-        )
+        public static bool GetMail(
+ string email,
+ string subject,
+ string message
+ )
         {
+            string senderEmail =
+                ConfigurationManager
+                .AppSettings["Email"];
+
+            string senderPassword =
+                ConfigurationManager
+                .AppSettings["Password"];
+
             MailMessage msg =
                 new MailMessage();
 
@@ -65,7 +72,7 @@ namespace StudentManagementSystem
 
             msg.From =
                 new MailAddress(
-                    "moataz.wmm@gmail.com"
+                    senderEmail
                 );
 
             msg.To.Add(email);
@@ -76,22 +83,23 @@ namespace StudentManagementSystem
 
             msg.IsBodyHtml = true;
 
-            smtp.Port = 587;
+            smtp.Host =
+                "smtp.gmail.com";
 
-            smtp.Host = "smtp.gmail.com";
+            smtp.Port =
+                587;
 
-            smtp.EnableSsl = true;
+            smtp.EnableSsl =
+                true;
 
-            smtp.UseDefaultCredentials = false;
+            smtp.UseDefaultCredentials =
+                false;
 
             smtp.Credentials =
                 new NetworkCredential(
-                    "moataz.wmm@gmail.com",
-                    "wxto hcry mzta pbmp"
+                    senderEmail,
+                    senderPassword
                 );
-
-            smtp.DeliveryMethod =
-                SmtpDeliveryMethod.Network;
 
             try
             {
@@ -101,7 +109,9 @@ namespace StudentManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(
+                    ex.Message
+                );
 
                 return false;
             }

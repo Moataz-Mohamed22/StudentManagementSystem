@@ -80,6 +80,7 @@
             // 
             // btn_exit
             // 
+            this.btn_exit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Location = new System.Drawing.Point(383, 94);
             this.btn_exit.Name = "btn_exit";
@@ -87,6 +88,7 @@
             this.btn_exit.TabIndex = 4;
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // errorProvider1
             // 
@@ -96,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_exit;
             this.ClientSize = new System.Drawing.Size(503, 153);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_delete);
