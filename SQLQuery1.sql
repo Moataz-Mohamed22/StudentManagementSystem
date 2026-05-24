@@ -77,5 +77,32 @@ VALUES
     'admin',
     'admin'
 )
+
+CREATE TABLE Faculty
+(
+    facId VARCHAR(100) CONSTRAINT pk_facId PRIMARY KEY,
+    
+    facName VARCHAR(100) NOT NULL,
+    
+    facDOB DATE,
+    
+    facGender VARCHAR(50),
+    
+    facMob VARCHAR(15),
+    
+    facEmail VARCHAR(50),
+    
+    facAddress TEXT,
+    
+    createdBy VARCHAR(100),
+    
+    createdOn DATETIME,
+    
+    updatedBy VARCHAR(100),
+    
+    updatedOn DATETIME
+);
 drop table Users
 drop table Role
+
+drop Table Faculty;

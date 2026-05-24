@@ -58,5 +58,12 @@ namespace StudentManagementSystem
             cp.MdiParent = this;
             cp.Show();
         }
+
+        private void facultyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Faculty_Management faculty = new Faculty_Management();
+            faculty.MdiParent = this;
+            faculty.Show();
+        }
     }
 }

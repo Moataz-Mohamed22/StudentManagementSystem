@@ -6,11 +6,11 @@ namespace StudentManagementSystem
 {
     public partial class Login : Form
     {
+        
         public Login()
         {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string userName = txtUserName.Text;
@@ -99,6 +99,11 @@ namespace StudentManagementSystem
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -11,19 +11,30 @@ namespace StudentManagementSystem
             InitializeComponent();
         }
 
-        private void ChangePassword_Load(object sender, EventArgs e)
+        private void ChangePassword_Load(
+            object sender,
+            EventArgs e
+        )
         {
             txtPassword.Clear();
 
-            txtPassword.Enabled = false;
+            txtPassword.Enabled =
+                false;
         }
 
-        private void btnChange_Click(object sender, EventArgs e)
+        private void btnChange_Click(
+            object sender,
+            EventArgs e
+        )
         {
             string userName =
                 txtUserName.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(userName))
+            if (
+                string.IsNullOrWhiteSpace(
+                    userName
+                )
+            )
             {
                 MessageBox.Show(
                     "Please Enter User Name",
@@ -46,7 +57,8 @@ namespace StudentManagementSystem
                 {
                     con.Open();
 
-                    string email = "";
+                    string email =
+                        "";
 
                     SqlCommand checkUser =
                         new SqlCommand(
@@ -64,7 +76,9 @@ namespace StudentManagementSystem
                         checkUser.ExecuteReader()
                     )
                     {
-                        if (!reader.Read())
+                        if (
+                            !reader.Read()
+                        )
                         {
                             MessageBox.Show(
                                 "User Does Not Exist",
@@ -128,7 +142,6 @@ namespace StudentManagementSystem
                         bool flag =
                             Helper.GetMail(
                                 email,
-
                                 "Credential Information",
 
                                 "Dear "
@@ -147,28 +160,40 @@ namespace StudentManagementSystem
                                 +
 
                                 "User Name : "
-                                + userName
-
-                                +
+                                + userName +
 
                                 "<br/>"
 
                                 +
 
                                 "Password : "
-                                + newPassword
+                                + newPassword +
+
+                                "<br/><br/>"
 
                                 +
 
-                                "<br/><br/>Regards,<br/>Admin<br/>Student Management System"
+                                "Regards,<br/>Admin"
                             );
 
-                        MessageBox.Show(
-                            "Password Changed Successfully",
-                            "Success",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
+                        if (flag)
+                        {
+                            MessageBox.Show(
+                                "Password Changed And Email Sent",
+                                "Success",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                            );
+                        }
+                        else
+                        {
+                            MessageBox.Show(
+                                "Password Changed But Email Failed",
+                                "Warning",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        }
 
                         txtUserName.Clear();
                     }
