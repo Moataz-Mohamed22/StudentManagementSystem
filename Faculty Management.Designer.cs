@@ -183,6 +183,7 @@
             this.btnShow.TabIndex = 13;
             this.btnShow.Text = "Show";
             this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // btnUpdate
             // 
@@ -192,6 +193,7 @@
             this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
